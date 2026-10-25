@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title></title>
+        <link href="./main.css" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Geist+Pixel&display=swap" rel="stylesheet">
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <div class="nav">
+            <nav>
+               <ul>
+                    <li>
+                        <div class="navitm">
+                            <a href="main.html">Entrance</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="navitm">
+                            <a href="archive.html">Archive</a>
+                        </div>
+
+                    </li>
+                    <li>
+                        <div class="navitm">
+                            <a href="gallery.html">Gallery</a>
+                        </div>
+                    </li>
+                </ul> 
+            </nav>
+        </div>
+        <section id="desc-gallery">
+            <h1>The Leoffen Gallery</h1>
+            <div class="screen">
+                <p>The Leoffen Monthly Edition, rather than exclusively functioning in the written word, exhibits visual arts as well. We believe that, as a human & scholarly endeavor, the LME must champion other forms of human pursuit in a time when all are under attack.</p>
+            </div>
+            <div class="screen">
+                <h2>Media Exhibition Types</h2>
+                <div class="container">
+                    <div class="row">
+                        <div class="column">
+                            <h2><a href="#photo-desc">Photographs</a></h2>
+                        </div>
+                        <div class="column">
+                            <h2><a href="#music-desc">Music</a></h2>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="column">
+                            <h2><a href="#video-desc">Video/Films</a></h2>
+                        </div>
+                        <div class="column">
+                            <h2><a href="#design-desc">Graphic Designs</a></h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="photo-desc">
+            <h2>Photographs</h2>
+            <div class="screen">
+                <p>Below is a repository of photographs taken as part of the Leof Visual Media Project.</p>
+                <div id="photoscroll"></div>
+            </div>
+        </section>
+        <section id="music-desc">
+            <h2>Music (audio)</h2>
+            <div class="screen">
+                <p>Below is a repository of audio recordings of created taken as part of the Leof Audio Works Project.</p>
+                <div id="musicscroll"></div>
+            </div>
+        </section>
+        <section id="video-desc">
+            <h2>Videos</h2>
+            <div class="screen">
+                <p>Below is a repository of video recordings taken as part of the Leof Video Media Project.</p>
+                <div id="vidscroll"></div>
+            </div>
+        </section>
+        <section id="design-desc">
+            <h2>Designs</h2>
+            <div class="screen">
+                <p>Below is a repository of designs created as part of the Leof Visual Works Project.</p>
+                <div id="designscroll"></div>
+            </div>
+        </section>
+        <canvas id="lifeCanvas"></canvas>
+        <script type = "module">
+            import {mainLoop, createGrid} from './main.js';
+            const canvas = document.getElementById('lifeCanvas');
+            const ctx = canvas.getContext('2d');
+
+            // Define cell size and grid dimensions
+            const cellSize = 2;
+            const numRows = Math.floor(canvas.height / cellSize);
+            const numCols = Math.floor(canvas.width / cellSize);
+            
+            let grid = createGrid();
+            let isRunning = false;
+            let animationId = null;
+            mainLoop();
+        </script>
+    </body>
+</html>

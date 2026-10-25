@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title></title>
+        <link href="./main.css" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Geist+Pixel&display=swap" rel="stylesheet">
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <div class="nav">
+            <nav>
+               <ul>
+                    <li>
+                        <div class="navitm">
+                            <a href="main.html">Entrance</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="navitm">
+                            <a href="archive.html">Archive</a>
+                        </div>
+
+                    </li>
+                    <li>
+                        <div class="navitm">
+                            <a href="gallery.html">Gallery</a>
+                        </div>
+                    </li>
+                </ul> 
+            </nav>
+        </div>
+        <section class="hero-section">
+            <div class="hero-image"><img src="./assets/background.GIF" alt="hero-image"></div>
+            <div class="hero-fade-overlay"></div>
+            <div class="hero-content">
+                <img src="./assets/hero-title.png" alt="The Leoffen Monthly">
+            </div>
+        </section>
+        <div class = "fade-overlay"></div>
+        <section id="about-leof" class="sect-block">
+            <div class="screen" width="50%" height="50%">
+                <h2>What is Leof?</h2>
+                <p>Leof, meaing "friend" in old English, is the namesake of the Leoffen Monthly Edition. We post monthly instilations to the Leoffen Monthly Edition, which is a collection of articles, essays, and papers (see more abt. types of installments <a href="#about-the-edition">below</a>) that aim to gain perspective on a variety of scholarly or scholarly-adjacent topics.</p>
+            </div>
+        </section>
+        <section>
+            <div class="screen">
+                <h2>Why Seek To Understand?</h2>
+                <div class="quoteblock">
+                    <p>"Rather than love, than money, than fame, give me truth."</p>
+                    <p>-Henry David Thoreau</p>
+                </div>
+                <p>we live in a world where truth is increasingly rendered an afterthought in many regards. The line between fact and fiction is, and in truth has always been, in a state of flux. the Leof project aims to at least cause come kind of reflection and consideration of that blurred reality.</p>
+            </div>
+        </section>
+        <section>
+            <div class="screen" width="50%" height="50%">
+                <h2>Who is Leof?</h2>
+                <p>Leof is not one person, in truth everyone is a Leof. You reading this especially (I don't expect many to see this, so good on you!). We as humans have a remarkable ability to find community wherever we may be, and in part the Leof project is a celebration of that. Really though, the Leof project was started by RKM and at present is just comprised of RKM.</p>
+            </div>
+        </section>
+        <section id="about-the-edition">
+            <div class="screen">
+                <h2>How To Read the Leoffen Monthly Edition</h2>
+                <p>The Leoffen Monlthy Edition, being essentially a repository of written works, is structured according to the categorical classification of works. The classifications are as follows:</p>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="column">
+                        <details>
+                            <summary>On Papers</summary>
+                            <p>A heavy, inductive, provable analysis or argument concerning material observation of facts and the conclusions that can then be drawn from them. The academic paper is a broad category, and so can be a mix of analysis, experiment, rationale, and argument.</p>
+                            <p>Overall a more heavy, academically oriented read.</p>
+                        </details>
+                    </div>
+                    <div class="column">
+                        <details>
+                            <summary>On Articles</summary>
+                            <p>More resembling traditional news articles, the article is a written work dedicated to an overall assessment or summary of a topic. These can (and likely will) be current events, or just as likely, esoteric topics that I found insightful or simply captivating.</p>
+                            <p>A more casual read, suitable for a commute.</p>
+                        </details>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="column">
+                        <details>
+                            <summary>On Treatises</summary>
+                            <p>As we enter the more intellectually geared works, we have the treatise. In sum, the treatise is a discourse concerning one particular topic or concern. It aims to use acute rational deduction to illuminate the nature of said topic. Unlike the paper, the treatise deals more with theory than it does analysis.</p>
+                            <p>For any who bore at the sight of quantitative and empirical interpretation.</p>
+                        </details>
+                    </div>
+                    <div class="column">
+                        <details>
+                            <summary>On Poems</summary>
+                            <p>I personally hold that the eastern tradition of meditative knowledge is one overlooked in the west. The poem is an abstract, interprative piece that aims to ilicit a kind of deeper, more intrinsic and spiritually textured knowledge than academic papers can.</p>
+                            <p>Short, sweet, great for rumination.</p>
+                        </details>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="Where-leof">
+                <div class="screen">
+                    <h2>SUBSTACK</h2>
+                    <p>The Substack Partition of the Leof Project is essentially the archive of monthly installments. All the articles you will find here you can also find on Substack.</p>
+                    <button class="img-button">
+                        <a href="https://leoffen.substack.com">LME Substack</a>
+                </button>
+                </div>
+        </section>
+        <canvas id="lifeCanvas"></canvas>
+        <script type = "module">
+            import {mainLoop, createGrid} from './main.js';
+            const canvas = document.getElementById('lifeCanvas');
+            const ctx = canvas.getContext('2d');
+
+            // Define cell size and grid dimensions
+            const cellSize = 2;
+            const numRows = Math.floor(canvas.height / cellSize);
+            const numCols = Math.floor(canvas.width / cellSize);
+            const color = '#00040D'
+            
+            let grid = createGrid();
+            let isRunning = false;
+            let animationId = null;
+            mainLoop();
+        </script>
+    </body>
+</html>
