@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     for (let x = 1; x <= totalPublications; x++) {
         const pubFolder = `./archive/pub${x}`;
         const descPath = `${pubFolder}/desc.txt`;
-        const repoLink = `https://github.com/your-username/your-repo/tree/main/archive/pub${x}`; // Replace with your repository link structure
+        const repoLink = `https://innacuracy.github.io/leofnet/archive/pub${x}`; // Replace with your repository link structure
 
         // Create section and internal elements
         const section = document.createElement("section");
