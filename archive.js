@@ -1,30 +1,14 @@
-async function getFolderItemCount(folderPath) {
-  const url = `https://github.com/Innacuracy/leofnet/tree/main/${folderPath}`;
-  
-  try {
-    const response = await fetch(url);
-    if (!response.ok) throw new Error(`HTTP error: ${response.status}`);
-    
-    const items = await response.json();
-    const totalItems = items.length; 
-    
-    console.log(`Total items: ${totalItems}`);
-    return totalItems;
-  } catch (error) {
-    console.error('Failed to fetch folder contents:', error);
-  }
-}
-
 document.addEventListener("DOMContentLoaded", async () => {
     const container = document.getElementById("archive-container");
     
-    // remember to update this number every time a new edition is published
-    const totalPublications = getFolderItemcount("archive")
+    // Remember to update this number every time a new edition is published
+    const totalPublications = 2;
+    const repopath = "https://[user]/[project]";
 
     // Loop through publications
     for (let x = 1; x <= totalPublications; x++) {
-        const pubFolder = `./archive/pub${x}`;
-        const descPath = `${pubFolder}/desc.txt`;
+        const pubFolder = `/archive/pub${x}`;
+        const descPath = `.${pubFolder}/desc.txt`;
 
         // Create section and internal elements
         const section = document.createElement("section");
@@ -36,28 +20,16 @@ document.addEventListener("DOMContentLoaded", async () => {
         const p = document.createElement("p");
         p.className = "description";
         p.textContent = "Loading description...";
-        for (let j = 1; x <= getFolderItemcount(`archive/pub${x}`)) {
 
-            const button = document.createElement("a");
-            itmlink = `/itm${j}.html`;
-            fullLink = `${pubFolder}/${itmlink}`;
-            button.href = fullLink;
-            button.textContent = fullLink.document.querySelector('h1').text();
-            button.className = "repo-btn";
-            button.target = "_blank";
-
-        section.appendChild(h2);
-        section.appendChild(p);
-        section.appendChild(button);
-
-        container.appendChild(section);
-
-        // Fetch and load the desc.txt content
+        // will use lines to pull data abt. publication (loading right number of items, item titles)
+        let lines = [];
         try {
             const response = await fetch(descPath);
             if (response.ok) {
                 const text = await response.text();
-                p.textContent = text;
+                lines = text.split(/\r?\n/);
+                p.textContent = lines[0];
+                const numitm = parseInt(lines[1], 10);
             } else {
                 p.textContent = "Description unavailable.";
             }
@@ -65,5 +37,27 @@ document.addEventListener("DOMContentLoaded", async () => {
             console.error(`Could not load description for pub${x}:`, error);
             p.textContent = "Error loading description.";
         }
+
+        // Append base section elements first
+        section.appendChild(h2);
+        section.appendChild(p);
+
+        // Loop to create buttons
+        for (let j = 1; j <= 2; j++) {
+            const button = document.createElement("a");
+            const itmlink = `/itm${j}.html`;
+            const fullLink = `${pubFolder}/${itmlink}`;
+            button.href = `${repopath}${fullLink}`;
+            
+            // Use fallback text if lines failed to fetch
+            button.textContent = lines[j + 2] || `Item ${j}`;
+            button.className = "repo-btn";
+            button.target = "_blank";
+
+            section.appendChild(button);
+        }
+
+        // Finally, append the fully constructed section to the container once
+        container.appendChild(section);
     }
 });
