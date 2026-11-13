@@ -41,9 +41,8 @@ document.addEventListener("DOMContentLoaded", async () => {
         // Append base section elements first
         section.appendChild(h2);
         section.appendChild(p);
-
         // Loop to create buttons
-        for (let j = 1; j <= 2; j++) {
+        for (let j = 1; j <= numitm; j++) {
             const button = document.createElement("a");
             const itmlink = `/itm${j}.html`;
             const fullLink = `${pubFolder}/${itmlink}`;
@@ -55,6 +54,8 @@ document.addEventListener("DOMContentLoaded", async () => {
             button.target = "_blank";
 
             section.appendChild(button);
+            const br = document.createElement("br");
+            section.appendChild(br);
         }
 
         // Finally, append the fully constructed section to the container once
